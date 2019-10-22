@@ -11,19 +11,19 @@
 
 
             <div class="form-group">
-              <label for="respuesta">Descripción</label>
+             <!-- <label for="respuesta">Descripción</label>  -->
               <input type="text" class="form-control" id="respuesta" aria-describedby="respuestaHelp" placeholder="Descripción" v-model="respuesta.respuesta">
-              <small id="respuestaHelp" class="form-text text-muted">Posible respuesta</small>
+            <!--  <small id="respuestaHelp" class="form-text text-muted">Posible respuesta</small> -->
             </div>
 
             <div class="form-group">
-              <label for="porcentaje">Porcentaje</label>
+             <!-- <label for="porcentaje">Porcentaje</label> -->
               <input type="text" class="form-control" id="porcentaje" aria-describedby="porcentajeHelp" placeholder="Porcentaje" v-model="respuesta.porcentaje">
-              <small id="porcentajeHelp" class="form-text text-muted">Porcentaje de valides de la respuesta</small>
+            <!--  <small id="porcentajeHelp" class="form-text text-muted">Porcentaje de valides de la respuesta</small> -->
             </div>
             
 
-           
+           <button type="button" class="btn btn-primary" v-on:click="guardarRespuesta(respuesta)">OK</button>
 
             
 
@@ -60,6 +60,11 @@ export default {
         }
         
 			}
-}
+},
+methods:{
+  guardarRespuesta:function(respuesta){
+            this.$emit('guardarRespuesta',respuesta)
+        }
+    }
 }
 </script>

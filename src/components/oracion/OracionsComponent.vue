@@ -1,6 +1,8 @@
 <template>
 
   <div class="">
+{{oracion}}
+
     <div class="">
 
     </div>
@@ -35,6 +37,7 @@
 
 
             <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="button" class="btn btn-primary" v-on:click="guardarOracion(oracion)">OK</button>
           </form>
 
 
@@ -92,9 +95,8 @@ import Oracion from '../../services/oracions'
 
 export default {
   name: 'OracionsComponent',
-  props: {
-    msg: String
-  },data(){
+   props:['enviarRespuestas'],
+   data(){
 			return {
 				oracions: [],
         oracion:{
@@ -115,6 +117,10 @@ export default {
     this.oracions=resposta.data
   })
   },saveOracion(){
+
+    this.oracion.respuestas=this.enviarRespuestas;
+
+    console.log(this.oracion.respuestas);
 
       if(!this.oracion.id){
         Oracion.save(this.oracion).then(resposta=>{
@@ -163,7 +169,11 @@ export default {
         
 
 
-    }
+    },
+  guardarOracion:function(oracion){
+            this.$emit('guardarOracion',oracion)
+        }
+    
 
 
 
